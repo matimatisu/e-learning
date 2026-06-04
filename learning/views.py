@@ -4,11 +4,11 @@ from .models import Lesson,Slide,Quiz
 
 from .forms import SubmissionForm
 
-from .models import Submission, Result
+from .models import Submission, Result, LessonProgress
 
 from .services import grade_excel
 
-
+#スライドの詳細を表示するビュー
 def slide_detail(request, slide_id):
 
     slide = Slide.objects.get(id=slide_id)
@@ -19,6 +19,7 @@ def slide_detail(request, slide_id):
 
     return render(request, 'learning/slide_detail.html', {'slide': slide, 'next_slide': next_slide, 'previous_slide': previous_slide})
 
+#クイズの表示と回答の処理を行うビュー
 def quiz_view(request, lesson_id):
 
     quiz = Quiz.objects.get(lesson_id=lesson_id)
@@ -33,12 +34,23 @@ def quiz_view(request, lesson_id):
 
             result = 'Correct!'
 
+            LessonProgress.objects.update_or_create(
+
+                user=request.user,
+
+                lesson=quiz.lesson,
+
+                defaults={"completed": True}
+                
+            )
+
         else:
 
             result = 'wow,Wrong!'
     
     return render(request, 'learning/quiz.html',{'quiz': quiz, 'result': result,})
 
+#課題提出のビュー
 def submission_view(request, lesson_id):
 
     lesson = Lesson.objects.get(id=lesson_id)

@@ -2,6 +2,8 @@ from django.db import models
 
 from courses.models import Course
 
+from django.contrib.auth.models import User
+
 class Lesson(models.Model):
 
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
@@ -75,5 +77,19 @@ class Result(models.Model):
     def __str__(self):
 
         return f"{self.score}点"
+    
+class LessonProgress(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
+
+    completed = models.BooleanField(default=False)
+
+    completed_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+
+        return f"{self.user.username} - {self.lesson.title}"
 
 # Create your models here.
