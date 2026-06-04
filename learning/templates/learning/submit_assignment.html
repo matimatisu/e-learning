@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>課題提出</title>
+</head>
+
+<body>
+
+<h1>
+
+課題提出
+
+</h1>
+
+<form
+    method="POST"
+    enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit">
+
+        提出
+
+    </button>
+
+</form>
+
+</body>
+
+</html>

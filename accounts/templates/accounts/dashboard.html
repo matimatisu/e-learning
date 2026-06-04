@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ダッシュボード</title>
+
+    <link rel="stylesheet"
+          href="{% static 'accounts/style.css' %}">
+</head>
+
+<body>
+
+<div class="login-box">
+
+    <h1>ダッシュボード</h1>
+
+    <p>{{ user.username }}さん、ようこそ！</p>
+
+    <a href="/courses/">
+        コース一覧へ
+    </a>
+
+</div>
+
+</body>
+
+</html>

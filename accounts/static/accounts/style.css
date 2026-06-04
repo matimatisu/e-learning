@@ -1,0 +1,36 @@
+body{
+
+    background:#f4f7fb;
+}
+
+
+.login-box{
+
+    width:400px;
+
+    margin:100px auto;
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:10px;
+}
+
+
+input{
+
+    width:100%;
+
+    margin-bottom:20px;
+
+    padding:10px;
+}
+
+
+button{
+
+    width:100%;
+
+    padding:10px;
+}

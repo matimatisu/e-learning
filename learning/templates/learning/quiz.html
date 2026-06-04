@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+{% load static %}
+<hr>
+
+<html>
+
+<head>
+
+    <title>Quiz</title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'learning/css/quiz.css' %}">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script src="{% static 'learning/js/quiz.js' %}"></script>
+
+</head>
+<body>
+
+<h1>
+
+    小テスト
+
+</h1>
+
+<div id = "quiz-result" data-result = "{{ result }}" style = "display:none;"></div>
+
+<div id="result-modal" style="display:none;">
+
+    <div class="modal-content">
+
+        <h2 id="result-title"></h2>
+
+        <p>
+            {{ quiz.explanation }}
+        </p>
+
+        <div id="correct-buttons">
+
+            <a href="{% url 'submit_assignment' quiz.lesson.id %}">
+                課題へ進む
+            </a>
+
+            <a href="{% url 'slide_detail' quiz.lesson.slide_set.first.id %}">
+                スライドを再確認
+            </a>
+
+        </div>
+
+        <div id="wrong-buttons">
+
+            <a href="{% url 'slide_detail' quiz.lesson.slide_set.first.id %}">
+                スライドを再確認
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<p>
+
+    {{ quiz.question }}
+
+</p>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <input
+        type="radio"
+        name="answer"
+        value="{{ quiz.choice_1 }}">
+
+    {{ quiz.choice_1 }}
+
+    <br><br>
+
+    <input
+        type="radio"
+        name="answer"
+        value="{{ quiz.choice_2 }}">
+
+    {{ quiz.choice_2 }}
+
+    <br><br>
+
+    <input
+        type="radio"
+        name="answer"
+        value="{{ quiz.choice_3 }}">
+
+    {{ quiz.choice_3 }}
+
+    <br><br>
+
+    <button>
+
+        回答
+
+    </button>
+
+</form>
+
+</body>
+
+</html>

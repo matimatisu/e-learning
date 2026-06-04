@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{ course.title }}</title>
+</head>
+
+<body>
+
+<h1>
+    {{ course.title }}
+</h1>
+
+{% for lesson in lessons %}
+
+<div>
+    
+    <a href="/learning/slide/{{ lesson.slide_set.first.id }}/">
+
+        {{ lesson.order }}
+
+        {{ lesson.title }}
+
+    </a>
+    
+</div>
+
+<hr>
+
+{% endfor %}
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>コース一覧</title>
+</head>
+
+<body>
+
+<h1>コース一覧</h1>
+
+{% for course in courses %}
+
+<div>
+    <a href="/courses/{{ course.id }}/">
+        <h2>
+            {{ course.title }}
+        </h2>
+    </a>
+
+    <p>
+        {{ course.description }}
+    </p>
+
+</div>
+
+<hr>
+
+{% endfor %}
+
+</body>
+
+</html>

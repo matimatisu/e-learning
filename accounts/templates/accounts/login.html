@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ログイン</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/style.css' %}">
+</head>
+
+<body>
+
+<div class="login-box">
+
+    <h1>ログイン</h1>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <label>メールアドレス</label>
+        <input type="text" name="email">
+
+
+
+        <label>パスワード</label>
+        <input type="password" name="password">
+
+        <button>ログイン</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

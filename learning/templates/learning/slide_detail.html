@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>
+        {{ slide.title }}
+    </title>
+
+</head>
+
+<body>
+
+<div>
+
+     <h1>
+        {{ slide.title }}
+    </h1>
+
+    <p>
+        {{ slide.content }}
+    </p>
+
+
+    <div>
+        {% if previous_slide%}
+
+            <a href="/learning/slide/{{ previous_slide.id }}/">
+
+                ◀ 前へ 
+
+            </a>
+
+        {% endif %}
+
+        {{ slide.order }}
+
+        {% if next_slide %}
+
+            <a href="/learning/slide/{{ next_slide.id }}/">
+
+                次へ ▶
+
+            </a>
+
+        {% endif %}
+
+    </div>
+
+
+</div>
+
+ <a href="/learning/quiz/{{ slide.lesson.id }}/">
+
+    小テストへ
+
+</a>    
+
+</body>
+
+</html>
