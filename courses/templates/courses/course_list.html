@@ -1,33 +1,73 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
 
-<head>
-    <title>コース一覧</title>
-</head>
+{% block title %}
+コース一覧
+{% endblock %}
 
-<body>
+{% block content %}
 
 <h1>コース一覧</h1>
 
-{% for course in courses %}
+<div class="row">
 
-<div>
-    <a href="/courses/{{ course.id }}/">
-        <h2>
-            {{ course.title }}
-        </h2>
-    </a>
+    {% for item in course_data %}
 
-    <p>
-        {{ course.description }}
-    </p>
+    <div class="col-md-6 mb-4">
+
+        <div class="card shadow-sm h-100">
+
+            <div class="card-body">
+
+                <h2 class="card-title">
+                    📕 {{ item.course.title }}
+                </h2>
+
+                <p>
+                    {{ item.course.description }}
+                </p>
+
+                <p>
+                    進捗率：{{ item.progress }}%
+                </p>
+
+                <p>
+                    完了レッスン：
+                    {{ item.completed_lessons }}
+                    /
+                    {{ item.total_lessons }}
+                </p>
+
+                <div class="progress mb-3">
+
+                    <div
+                        class="progress-bar"
+                        role="progressbar"
+                        style="width: {{ item.progress }}%;">
+
+                        {{ item.progress }}%
+
+                    </div>
+
+                </div>
+
+                <a
+                    href="/courses/{{ item.course.id }}/"
+                    class="btn btn-primary">
+
+                    学習開始
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
 
 </div>
 
 <hr>
 
-{% endfor %}
-
-</body>
-
-</html>
+{% endblock %}
