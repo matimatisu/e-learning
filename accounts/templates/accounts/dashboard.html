@@ -1,29 +1,34 @@
-{% load static %}
+{% extends 'base.html' %}
 
-<!DOCTYPE html>
-<html>
+{% block title %}
+ダッシュボード
+{% endblock %}
 
-<head>
-    <title>ダッシュボード</title>
+{% block content %}
 
-    <link rel="stylesheet"
-          href="{% static 'accounts/style.css' %}">
-</head>
+<h1>
+    おかえりなさい {{ request.user.username }} さん！
+</h1>
 
-<body>
+<hr>
 
-<div class="login-box">
 
-    <h1>ダッシュボード</h1>
+<div class="card shadow-sm">
 
-    <p>{{ user.username }}さん、ようこそ！</p>
+    <div class="card-body">
 
-    <a href="/courses/">
-        コース一覧へ
-    </a>
+        <h2>学習中のコース</h2>
+
+        <p>総コース数：{{ total_courses}}</p>
+
+        <p>完了レッスン数:{{ completed_lesson }}</p>
+
+        <a href="/courses/" class="btn btn-primary">
+            コース一覧へ
+        </a>
+
+    </div>
 
 </div>
 
-</body>
-
-</html>
+{% endblock %}

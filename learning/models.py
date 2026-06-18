@@ -92,4 +92,30 @@ class LessonProgress(models.Model):
 
         return f"{self.user.username} - {self.lesson.title}"
 
+#管理しやすくる
+class Assignment(models.Model):
+
+    lesson = models.ForeignKey(
+        Lesson,
+        on_delete = models.CASCADE
+    )
+
+    title = models.CharField(
+        max_length = 100
+    )
+
+    instruction = models.TextField()
+
+    answer_cell = models.CharField()
+
+    correct_value = models.CharField(
+        max_length=100
+    )
+
+    required_formula = models.CharField(max_length = 50 , blank = True)
+
+    def __str__(self):
+
+        return self.title
+    
 # Create your models here.

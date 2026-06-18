@@ -67,7 +67,7 @@ def submission_view(request, lesson_id):
 
             submission.save()
             
-            score = grade_excel(submission.file.path)
+            score = grade_excel(submission.file.path,lesson)
 
             result = Result.objects.create(submission=submission, score=score)
 
