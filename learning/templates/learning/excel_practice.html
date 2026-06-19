@@ -1,0 +1,25 @@
+{% load static %}
+
+{% extends 'base.html' %}
+
+{% block title %}
+Excel演習
+{% endblock %}
+
+{% block content %}
+
+<h1>
+    {{ assignment.title }}
+</h1>
+
+<p>
+    {{ assignment.instruction }}
+</p>
+
+<hr>
+
+<div id="excel-table"></div>
+
+<script src="{% static 'js/excel_practice.js' %}"></script>
+
+{% endblock %}

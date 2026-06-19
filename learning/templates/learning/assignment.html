@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ assignment.title }}
+{% endblock %}
+
+{% block content %}
+
+<h1>
+    {{ assignment.title }}
+</h1>
+
+<div id="excel-table"></div>
+
+<script src="/static/js/assignment.js"></script>
+
+<div class="card p-4">
+
+    <h3>演習内容</h3>
+
+    <p>
+        {{ assignment.instruction }}
+    </p>
+
+</div>
+
+<div class="mt-3">
+
+    <a
+        href="{% url 'excel_practice' assignment.lesson.id %}"
+        class="btn btn-success">
+
+        演習を開始する
+
+    </a>
+
+</div>
+
+<script src="{% static 'js/assignment.js' %}"></script>
+
+{% endblock %}

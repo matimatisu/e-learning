@@ -8,6 +8,8 @@ from .models import Submission, Result, LessonProgress
 
 from .services import grade_excel
 
+from .models import Assignment
+
 #スライドの詳細を表示するビュー
 def slide_detail(request, slide_id):
 
@@ -79,7 +81,31 @@ def submission_view(request, lesson_id):
 
     return render(request, "learning/submit_assignment.html", {'form': form})
 
+def assignment_view(request, lesson_id):
 
+    assignment = Assignment.objects.get(
+        lesson_id=lesson_id
+    )
 
+    return render(
+        request,
+        "learning/assignment.html",
+        {
+            "assignment": assignment
+        }
+    )
 
+def excel_practice(request, lesson_id):
+
+    assignment = Assignment.objects.grt(
+        lesson_id = lesson_id
+    )
+
+    return render(
+        request,
+        "learning/excel_practice.html",
+        {
+            "assignment": assignment
+        }
+    )
 # Create your views here.

@@ -9,4 +9,7 @@ urlpatterns=[
 
     path('submit/<int:lesson_id>/', views.submission_view, name='submit_assignment'),
 
+    path('assignment/<int:lesson_id>/',views.assignment_view,name="assignment"),
+
+    path('practice/<int:lesson_id>/',views.excel_practice,name='excel_practice'),
 ]
